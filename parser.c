@@ -295,14 +295,14 @@ void statement(){
         return;
     }
 
-    if(token.type == beginsym){
+    if(token.type == dosym){
         do{
             token = getNextToken();
             statement();
         }while(token.type == semicolonsym);
 
-        if(token.type != endsym){
-            if(token.type == identsym || token.type == beginsym || token.type == ifsym || token.type == whilesym || token.type == readsym || token.type == writesym || token.type == callsym){
+        if(token.type != odsym){
+            if(token.type == identsym || token.type == dosym || token.type == whensym || token.type == whilesym || token.type == readsym || token.type == writesym || token.type == callsym){
                 error = 15;
                 printparseerror(error);
                 exit(error);
@@ -318,20 +318,20 @@ void statement(){
         return;
     }
 
-    if(token.type== ifsym){
+    if(token.type== whensym){
         token = getNextToken();
         condition();
         jpcIdx = cIndex;
 
         emit(8, 0, jpcIdx);
-        if(token.type != thensym){
+        if(token.type != dosym){
             error = 8;
             printparseerror(error);
             exit(error);
         }
         token = getNextToken();
         statement();
-        if(token.type == elsesym){
+        if(token.type == elsedosym){
             int jmpIdx = cIndex;
             emit(7, 0, token.value);
             code[jpcIdx].m = cIndex * 3;

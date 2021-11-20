@@ -5,11 +5,11 @@
 */
 
 typedef enum token_type {
-	constsym = 1, varsym, procsym, beginsym, endsym, whilesym, dosym, 
-	ifsym, thensym, elsesym, callsym, writesym, readsym, identsym, 
-	numbersym, assignsym, addsym, subsym, multsym, divsym, modsym, 
-	eqlsym, neqsym, lsssym, leqsym, gtrsym, geqsym, oddsym, 
-	lparensym, rparensym, commasym, periodsym, semicolonsym
+    constsym = 1, varsym, procsym, dosym, odsym, whilesym, whensym,
+    elsedosym, callsym, writesym, readsym, identsym, numbersym, assignsym,
+    addsym, subsym, multsym, divsym, modsym, eqlsym, neqsym,
+    lsssym, leqsym, gtrsym, geqsym, oddsym, lparensym, rparensym,
+    commasym, periodsym, semicolonsym
 } token_type;
 
 typedef struct lexeme {
